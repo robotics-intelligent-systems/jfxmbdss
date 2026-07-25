@@ -4,14 +4,17 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="mdoxZMQU3LQ4lx2qr-Ks-1" value="SOSA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="360" y="240" width="400" height="60" as="geometry" />
+        <mxCell id="mdoxZMQU3LQ4lx2qr-Ks-1" value="SOSA" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="260" width="680" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="mdoxZMQU3LQ4lx2qr-Ks-2" value="HOST" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="360" y="360" width="120" height="60" as="geometry" />
+        <mxCell id="mdoxZMQU3LQ4lx2qr-Ks-2" value="HOST" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="360" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="mdoxZMQU3LQ4lx2qr-Ks-3" value="CMOSS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="520" y="360" width="240" height="60" as="geometry" />
+        <mxCell id="mdoxZMQU3LQ4lx2qr-Ks-3" value="CMOSS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="360" width="520" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lJue7c8rjL0uzLAYYsKT-1" value="FACE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="440" width="120" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
