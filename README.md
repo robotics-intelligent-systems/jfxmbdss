@@ -379,6 +379,41 @@ commissioning.
 Use original or appropriately licensed models and avoid reproducing
 restricted or proprietary platform specifications.
 
+
+## Mobile Offshore Base (MOB) Training Environment
+
+JFXMBDSS adds a non-operational naval-training and maritime-logistics profile inspired by the [Mobile offshore base (MOB) concept](https://en.wikipedia.org/wiki/Mobile_offshore_base). The reference describes a modular floating base assembled from interconnected semi-submersible platforms. In this project, the concept is represented as a research and training environment for instructors, engineers, emergency planners, and maritime logistics teams.
+
+The MOB digital twin can represent:
+
+- modular floating units, ballast states, joints, mooring, decks, service areas, and maintenance zones;
+- runway or flight-deck operations, embarkation, transfer, loading, unloading, and port-interface scenarios;
+- vessel, support craft, aircraft-support, subsea, sensor, environment, and logistics twins;
+- sea state, wind, waves, currents, visibility, weather, communications, and infrastructure events;
+- instructor-controlled events, trainee roles, checklists, telemetry, scoring, replay, and after-action review.
+
+### Training Scenario Boundary
+
+```text
+Training Objectives and Requirements
+                ↓
+MOB Configuration and Asset Twins
+                ↓
+Environment / Sea State / Weather
+                ↓
+Vessel, Deck, Logistics and Maintenance Models
+                ↓
+HLA / FMI / DEVS / ROS 2-DDS Interoperability
+                ↓
+Instructor Console + XR / 3D Visualization
+                ↓
+Telemetry, Assessment, Replay and After-Action Review
+```
+
+Recommended training profiles include deck and seamanship exercises, maritime logistics, maintenance and damage-control drills, search-and-rescue coordination, humanitarian and disaster-response scenarios, environmental monitoring, and virtual commissioning of modular offshore infrastructure.
+
+This profile is intended for education, research, preparedness, and non-operational simulation. It excludes weapon control, targeting, strike planning, and operational command functions. Model geometry, scenarios, and datasets should use original or appropriately licensed assets.
+
 ## Modelica and FMI
 
 Modelica can represent propulsion, electrical, energy storage, thermal,
