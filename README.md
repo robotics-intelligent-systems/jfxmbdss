@@ -54,41 +54,50 @@ engines, and analytical services remain replaceable.
 -   Provide AI-assisted analytics with human oversight.
 -   Support lifecycle, maintenance, logistics, training, humanitarian,
     and engineering scenarios.
+-   Support portable AR training clients through qualified device profiles.
+-   Reuse MOB scenarios, twin identity and replay across desktop and AR clients.
 -   Separate required dependencies, optional integrations, and research
     references.
 
 ## Reference Architecture
 
-``` text
-                      USERS
-                        |
-       Engineer / Instructor / Analyst
-                        |
-               Experience Layer
-        Dashboards / 3D / XR / GIS
-                        |
-                AI & Analytics
-                        |
-                OpenTwin MBDSS
-                        |
-           Digital Twin Interface Bus
-                        |
- +----------+-----------+----------+-----------+
- |          |           |          |           |
-Asset     Mission    Telemetry   Health    Environment
-Twin       Twin        Twin       Twin        Twin
- +----------+-----------+----------+-----------+
-                        |
-             Simulation & Interop Bus
-                        |
- +--------+--------+--------+--------+---------+
- |        |        |        |        |         |
-FMI     HLA      DEVS     ROS 2     DDS    C2SIM/OARIS
- |        |        |        |        |         |
- +--------+--------+--------+--------+---------+
-                        |
-               MBSE / UAF / Arcadia
+The architecture includes a proposed **portable maritime AR training profile**
+inspired by IVAS at the conceptual level. It connects to the existing OpenTwin
+and MOB training services through a presentation gateway. No IVAS hardware,
+SDK, device access or working integration is supplied by this repository.
+
+```mermaid
+flowchart TD
+    E["MBSE and scenario configuration"] --> S["Maritime simulation services"]
+    S <--> B["FMI, HLA, DEVS and ROS 2 adapters"]
+    B <--> T["OpenTwin state, health and events"]
+    T --> G["XR presentation gateway"]
+    G --> P["Portable AR client"]
+    G --> D["Desktop and GIS clients"]
+    P --> I["Training interaction service"]
+    I --> C["Instructor and scenario authority"]
+    C --> S
+    T --> R["Recorder and replay"]
+    I --> R
+    R --> G
+    T --> A["Advisory AI and analytics"]
+    A --> C
 ```
+
+| Layer | Responsibility | Integration boundary |
+| --- | --- | --- |
+| Engineering | Requirements, configuration, model versions and scenario objectives | MBSE registry and scenario manifest |
+| Simulation | Maritime assets, environment and multidomain models | Existing FMI/HLA/DEVS/ROS 2 adapters |
+| Twin core | Canonical asset state, health, events and provenance | Versioned state and event schemas |
+| Presentation gateway | Role-filtered scene state, annotations and status | Client API independent of simulation middleware |
+| Portable AR | Local rendering, tracking, input and device health | Qualified OpenXR/runtime and device-specific capabilities |
+| Training interaction | Checklist acknowledgments, annotations and assistance requests | Instructor-controlled scenario service |
+| Assessment | Time-aligned recording, replay and human-reviewed feedback | Shared session/event identifiers |
+
+The headset is a presentation and training-input endpoint. Simulation services
+retain authoritative asset state; instructor services retain scenario control.
+C2SIM/OARIS interfaces remain behind their existing research adapters, rather
+than becoming headset command channels.
 
 ## OpenTwin Maritime Digital Twin
 
@@ -252,6 +261,12 @@ publish/subscribe middleware.
 3D clients, dashboards, GIS, notebooks, XR training clients, replay, and
 after-action analysis.
 
+### Portable AR Session
+
+Device capabilities, session roles, tracking validity, spatial anchors,
+overlay provenance, checklist interactions and replay references. See the
+portable augmented-reality profile for contracts and qualification gates.
+
 ### Model Registry
 
 Each model should record ID, version, domain, fidelity, interface
@@ -414,6 +429,145 @@ Recommended training profiles include deck and seamanship exercises, maritime lo
 
 This profile is intended for education, research, preparedness, and non-operational simulation. It excludes weapon control, targeting, strike planning, and operational command functions. Model geometry, scenarios, and datasets should use original or appropriately licensed assets.
 
+
+## Portable Augmented Reality — IVAS-Inspired Training Profile
+
+**Status: proposed architecture; no implemented IVAS adapter.**
+
+The user-provided [Integrated Visual Augmentation System reference](https://en.wikipedia.org/wiki/Integrated_Visual_Augmentation_System)
+describes wearable visual augmentation combining a display, portable computing,
+sensors, networking and power. jfxmbdss adopts the modular wearable concept
+for maritime training, inspection rehearsal and digital-twin visualization.
+This secondary reference is not an SDK specification or evidence of accessible
+IVAS interfaces.
+
+The design does not claim IVAS equivalence, certification, military-grade
+ruggedness, sensor access or binary compatibility. Its scope follows the
+project's existing non-operational training boundary.
+
+### Portable system modules
+
+| Module | Proposed responsibility | Required qualification |
+| --- | --- | --- |
+| Display and interaction | Asset labels, instructional overlays, checklists and annotated 3D scenes | Device/runtime profile, readable presentation and supported input methods |
+| Local compute | Render loop, session cache and local tracking integration | Measured performance, temperature and power behavior |
+| Pose and spatial registration | Headset pose, anchors and alignment with a vessel or training mock-up | Frame conventions, calibration revision, drift and tracking validity |
+| Optional cameras | Recorded or permitted live imagery for inspection-training views | Actual device API, timestamps, calibration, consent and retention rules |
+| Connectivity | Synchronize scene updates and training events with the gateway | Authenticated sessions, reconnect behavior and stale-data detection |
+| Power and device health | Battery/runtime status, thermal state and disconnect events | Supported device telemetry; no assumed endurance |
+| Instructor endpoint | Assign exercises, review annotations and control replay | Role-based permissions and auditable scenario changes |
+
+Thermal, low-light, depth, hand tracking, eye tracking and passthrough are
+**optional capabilities**, not mandatory features or inferred IVAS APIs.
+Provide synthetic/recorded inputs for a desktop-first prototype. A headset
+without qualified spatial tracking can use a fixed panel view rather than
+claiming accurately registered object overlays.
+
+### Open software and standards profile
+
+| Component | Proposed use | Scope |
+| --- | --- | --- |
+| [OpenXR](https://www.khronos.org/openxr/) | Application-to-XR-runtime boundary | Open API standard; not a guarantee that every device exposes cameras, anchors or passthrough |
+| Godot | Candidate open rendering and interaction client | Qualify the chosen release, graphics backend and OpenXR extensions |
+| [Monado](https://monado.freedesktop.org/) | Candidate open-source XR runtime | Device, operating-system and driver support vary; inspect the supported-hardware matrix |
+| Blender / glTF assets | Prepare original training scenes and geometry | Track mesh revision, units and asset licenses |
+| Existing OpenTwin APIs | Deliver scene state and receive training interactions | Define versioned schemas and authorization at the gateway |
+| Existing ROS 2/DDS and HLA adapters | Bridge synthetic sensor or simulation state | Remain server-side; no automatic mapping to XR semantics |
+| PostgreSQL/PostGIS and recorder | Session metadata, spatial references and replay indexes | Apply existing provenance and access policies |
+
+Khronos documents OpenXR support in Godot, but that does not establish a
+working IVAS port. Monado is a candidate only for a supported, tested device
+configuration. An open application can still depend on proprietary firmware,
+drivers or runtimes; record those dependencies separately.
+
+A future adapter to actual IVAS would require authorized hardware access,
+documented SDK/protocols, compatible runtime support and independent tests.
+Until those inputs exist, record its compatibility as **unknown**, and use
+a generic AR client for the proposed implementation.
+
+### Spatial and temporal contracts
+
+| Contract | Minimum information |
+| --- | --- |
+| Session | Session/scenario IDs, participant role, device profile and schema version |
+| Pose | Timestamp, parent frame, position, orientation convention and tracking status |
+| Anchor | Anchor ID, vessel/deck/compartment frame, calibration revision and validity |
+| Overlay | Asset ID, source kind, timestamp, confidence/quality and expiry policy |
+| Interaction | Event ID, actor/session, checklist or annotation reference and acknowledgment |
+| Device status | Connection, battery/thermal fields where available and last update time |
+| Replay | Scenario/model revisions, original event timestamps, playback time and replay flag |
+
+Distinguish Earth/geospatial, vessel, deck/compartment, local tracking and
+headset frames. Vessel motion must not be mistaken for user motion. Validate
+transform direction, handedness, units and reset/relocalization behavior
+before enabling spatially registered overlays on a moving-platform scenario.
+
+Keep the local rendering/tracking clock separate from the simulation clock.
+Record acquisition, ingestion and display timestamps where available. Label
+synthetic, recorded and live data visibly. Hide or mark expired overlays;
+loss of tracking must disable registered overlays rather than leave them
+apparently attached to the wrong object.
+
+### Fusion with the Mobile Offshore Base profile
+
+The portable AR client reuses MOB asset IDs, scenario packages, instructor
+events and replay services. It does not maintain a competing vessel or
+platform model.
+
+| Existing MOB workflow | AR extension | Assessment evidence |
+| --- | --- | --- |
+| Infrastructure familiarization | Compartment labels and instructor-authored equipment information | Visited training stations and completed tasks |
+| Maintenance rehearsal | Versioned inspection checklists and annotated component twins | Checklist acknowledgments, notes and source-document revision |
+| Damage-control drills | Synthetic incident indicators and exercise instructions | Time-stamped participant/instructor events |
+| Logistics training | Training cargo/zone annotations and workflow checklists | Exercise task completion and shared asset identity |
+| Humanitarian/SAR exercises | Synthetic scene annotations and team-role instructions | Instructor-reviewed communications and activity timeline |
+| Virtual commissioning | Display simulated subsystem states beside a mock-up or virtual asset | Comparison between expected and observed simulation state |
+
+AI may retrieve engineering references and propose explanations with cited
+document versions. It does not autonomously alter training authority or
+replace instructor review. The scope remains training and engineering
+visualization; the existing exclusions for targeting and weapon control
+continue to apply.
+
+### Connectivity, recording and human factors
+
+Cache the approved scene and instructional content for a bounded offline
+session. Mark remote state as stale after the profile's configured limit.
+On reconnection, reconcile event IDs and timestamps without silently
+overwriting instructor decisions. Use separate roles for instructors,
+trainees and observers.
+
+Record the minimum data needed for debriefing. Raw camera imagery, voice and
+gaze data are optional and require an explicit collection/retention choice.
+Prefer synthetic data during development. The user must be able to dismiss
+overlays, pause the exercise and switch to a conventional display.
+
+Evaluate readability, occlusion, latency, comfort, motion sensitivity,
+input usability with training equipment and session duration. Saltwater
+exposure, weather resistance, protective-equipment compatibility and moving-deck
+use require separate hardware evidence; they are not conferred by software.
+
+### MVP and acceptance gates
+
+1. **Desktop replay:** load one generic vessel/MOB scene, recorded twin state
+   and a versioned inspection checklist.
+2. **XR device profile:** select a supported device/runtime, enumerate
+   capabilities and record licenses and extensions.
+3. **Portable client:** display the scene and local inputs; test tracking loss,
+   stale data, pause/reset and non-spatial fallback.
+4. **Shared session:** connect an instructor and trainee through the gateway,
+   with role checks, event deduplication and reconnect handling.
+5. **Debrief:** reconstruct checklist and annotation history against the
+   original scenario/model versions.
+
+Set measurable acceptance limits in the selected profile before testing:
+registration error, frame timing, end-to-end data age, reconnect recovery,
+dropped events and usable session duration. Values remain **TBD pending device
+selection and user evaluation**; this README does not invent validated targets.
+
+Promote the profile through documented, implemented, integration-tested and
+validated-for-a-specific-use stages. This update supplies documentation only.
+
 ## Modelica and FMI
 
 Modelica can represent propulsion, electrical, energy storage, thermal,
@@ -447,6 +601,8 @@ runtime dependencies.
   ML                          PyTorch / TensorFlow              Optional machine learning
   ML lifecycle                MLflow                            Experiment tracking
   XR                          OpenXR                            VR/AR interoperability
+  XR runtime                  Monado                            Optional device-qualified runtime
+  Wearable reference          IVAS                              Conceptual reference; compatibility unknown
   Containers                  Docker                            Reproducible services
   Orchestration               Kubernetes                        Distributed deployment
   APIs                        OpenAPI / AsyncAPI                Interface contracts
@@ -577,6 +733,7 @@ jfxmbdss/
 -   [x] OpenTwin MBDSS architecture.
 -   [x] Modular digital-twin interface catalog.
 -   [x] Required/optional/research dependency separation.
+-   [x] Document IVAS-inspired portable AR and MOB integration architecture.
 -   [ ] Normalize repository metadata and licenses.
 
 ### Phase 2 --- Minimal OpenTwin Core
@@ -629,7 +786,12 @@ jfxmbdss/
 -   [ ] Port logistics scenario.
 -   [ ] Humanitarian-response scenario.
 -   [ ] Environmental-monitoring scenario.
--   [ ] XR visualization experiment.
+-   [ ] Desktop-first MOB scene and checklist replay.
+-   [ ] XR capability manifest and supported device/runtime profile.
+-   [ ] Portable AR presentation gateway and training interaction adapter.
+-   [ ] Moving-frame registration, tracking-loss and stale-overlay tests.
+-   [ ] Instructor/trainee shared session and reconnect validation.
+-   [ ] Human-factors assessment and device-specific acceptance report.
 
 ## How to Contribute
 
