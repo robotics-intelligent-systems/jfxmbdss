@@ -99,6 +99,89 @@ retain authoritative asset state; instructor services retain scenario control.
 C2SIM/OARIS interfaces remain behind their existing research adapters, rather
 than becoming headset command channels.
 
+
+## Multi-Model and Multi-Agent Integration Architecture
+
+This extension adds a categorized research catalog and proposed integration
+boundaries to the existing maritime, MOB and portable AR architecture.
+**No listed component is integrated merely by appearing in this document.**
+The initial executable scope remains synthetic logistics, maintenance,
+infrastructure and instructor-led training scenarios.
+
+```mermaid
+flowchart TD
+    C["Versioned scenario and requirements"] --> O["Clock and lifecycle coordinator"]
+    O --> D["DEVS models"]
+    O --> P["Physical subsystem models"]
+    O --> A["Synthetic agents"]
+    D --> T["Canonical twin state and events"]
+    P --> T
+    A --> T
+    T <--> G["Qualified interoperability gateways"]
+    T --> R["Recorder and evaluation"]
+    T --> V["Desktop, MOB and portable AR views"]
+    I["Instructor authority"] --> O
+    R --> I
+```
+
+| Integration plane | Responsibility | Candidates |
+| --- | --- | --- |
+| Architecture and semantics | Requirements, entity types and model provenance | UAF, selected UDDL artifacts, canonical OpenTwin schemas |
+| Continuous models | Physical subsystem behavior | Existing Modelica/FMI services; CMD reference pending identification |
+| Discrete events | Scenario lifecycle, queues and event ordering | VLE, PythonPDEVS; ModelicaDEVS subject to license review |
+| Agent services | Asynchronous research tasks and synthetic resource allocation | OpenMAS, reactive-planner reference, qualified multi-agent environments |
+| Federation | Explicit mappings between canonical state and selected exchange models | HLA/NETN FOM, C2SIM, selected OARIS research interfaces |
+| Presentation | Scene, map and training views | Existing Godot/OpenXR path; optional Delta3D or ODINv2 evaluation |
+| Offline evaluation | Numerical comparison, model robustness and compute studies | adlib, ARL-HMS, Sniper where appropriate |
+
+### Contracts and execution rules
+
+| Contract | Required metadata and behavior |
+| --- | --- |
+| Model manifest | Upstream/revision, license, fidelity, runtime, interface version and validation evidence |
+| Entity state | Stable ID, units, reference frame, timestamp, producer and validity |
+| Event | Unique ID, simulation time, source, schema version, causal reference and acknowledgment |
+| Agent observation | Scenario/model revision, allowed data scope and synthetic-data flag |
+| Agent output | Typed proposed action or advisory result; authority and acceptance recorded by the scenario service |
+| Timing | One simulation-clock authority, step/event policy, late-message handling and deterministic tie-breaking |
+| Lifecycle | Initialize, ready, run, pause, checkpoint where supported, reset and stop |
+| Replay | Seeds, model versions, inputs, events, accepted decisions and reproducibility tolerance |
+
+An asynchronous agent runtime does not provide DEVS time semantics. A broker
+such as Kafka transports messages but does not establish a simulation clock.
+A DEVS/FMI bridge needs explicit solver-step, event-order and coupling rules.
+Each entity has one authoritative state producer; gateways must prevent
+duplicate events and feedback loops.
+
+NETN FOM supplies information-model modules for an HLA federation, not an RTI.
+C2SIM and OARIS require separate semantic mappings and profile selection.
+A common acronym or transport does not prove conformance. Keep external
+schemas versioned at gateway boundaries rather than embedding every standard
+in the twin core.
+
+Portable AR continues to consume role-filtered presentation state and send
+training interactions. It does not become a direct interface to external
+command systems. Existing MOB asset IDs, instructor authority and replay
+records remain shared across clients.
+
+### Proposed implementation sequence
+
+1. Define canonical manifests and schemas for a synthetic MOB logistics or
+   maintenance scenario.
+2. Implement one discrete-event backend and recorded replay before adding
+   other simulators.
+3. Add a single OpenMAS research service with bounded tasks and reproducible
+   observations; distinguish wall-clock completion from simulation time.
+4. Compare a second model implementation using declared tolerances and
+   identical inputs.
+5. Add one selected federation profile with schema, ownership and clock tests.
+6. Reuse the desktop/AR gateway and evaluate multi-user replay and stale data.
+
+Acceptance evidence must include schema rejection, unit/frame conversion,
+reset, out-of-order events, disconnect recovery, duplicate suppression,
+repeatable replay and the limits of model fidelity. HPC and AI studies are
+optional evaluation paths; neither implies validated maritime behavior.
+
 ## OpenTwin Maritime Digital Twin
 
 OpenTwin MBDSS synchronizes physical, simulated, synthetic, and
@@ -577,38 +660,107 @@ subsystem models.
 
 ## Open-Source Technology Compendium
 
-These are candidate integrations or research references, not automatic
-runtime dependencies.
+The following catalog separates software candidates, standards, restricted
+or proprietary-runtime references, and unresolved project identities.
+Source review: 2026-09-20. All new jfxmbdss adapters remain **proposed**.
 
-  Domain                      Candidate technology / standard   Potential role
-  --------------------------- --------------------------------- ------------------------------------
-  MBSE                        Capella / Arcadia                 Architecture engineering
-  Physical modeling           OpenModelica / Modelica           Multidomain simulation
-  Model exchange              FMI / FMU                         Portable subsystem models
-  CFD                         OpenFOAM                          Hydrodynamics/environment research
-  Multibody                   Project Chrono                    Mechanical simulation
-  Structural                  CalculiX                          Structural research
-  Robotics                    ROS 2                             Modular robotics integration
-  Messaging                   DDS                               Publish/subscribe
-  Distributed simulation      HLA-compatible RTI                Simulation federation
-  Discrete-event simulation   DEVS ecosystem                    Event-driven modeling
-  3D                          Blender                           Geometry and visualization
-  Interactive visualization   Godot                             Open 3D client
-  GIS                         QGIS                              Geospatial analysis
-  Database                    PostgreSQL / PostGIS              Operational and spatial data
-  Dashboards                  Grafana                           Monitoring
-  Analysis                    Jupyter                           Engineering notebooks
-  ML                          PyTorch / TensorFlow              Optional machine learning
-  ML lifecycle                MLflow                            Experiment tracking
-  XR                          OpenXR                            VR/AR interoperability
-  XR runtime                  Monado                            Optional device-qualified runtime
-  Wearable reference          IVAS                              Conceptual reference; compatibility unknown
-  Containers                  Docker                            Reproducible services
-  Orchestration               Kubernetes                        Distributed deployment
-  APIs                        OpenAPI / AsyncAPI                Interface contracts
+### 1. Synthetic training and simulation environments
 
-Verify current licenses, maintenance, security, and compatibility before
-adopting any third-party component.
+| Resource | Catalog role | Qualification |
+| --- | --- | --- |
+| [The Shoot: Open Fire Framework — ShootOFF](https://github.com/phrack/ShootOFF) | Laser dry-fire training framework reference | Distinct from the retired Python legacy version; reference only, not a maritime or IVAS integration |
+| [Half-Life engine based games / Half-Life SDK](https://github.com/ValveSoftware/halflife) | Game interaction and scenario-authoring reference | Valve SDK has specific distribution restrictions; game assets and runtime rights are separate from source availability |
+| [Delta3D](https://github.com/delta3d/delta3d) | Optional simulation/3D presentation engine candidate | Qualify source build, dependencies, asset licenses and adapter compatibility |
+| Advanced Framework for Simulation, Integration, and Modeling (AFSIM) | Comparative simulation-framework reference | Distribution/access conditions and authoritative version are unresolved here; not classified as an unrestricted open-source dependency |
+| [ARL Battlespace](https://github.com/USArmyResearchLab/ARL_Battlespace) | Abstract adversarial-reasoning research environment | Reviewed implementation is a Python strategy game; not evidence of a high-fidelity operational MDO system |
+| [Multi-Agent Simulation Platform](https://github.com/sdk2035/multi-agent-sim) | Emergent-behavior research reference | Reviewed fork includes resource-sharing and cooperative-task environments; preserve upstream provenance and evaluate toy-model limitations |
+
+These entries identify research resources. Tactical policy development,
+weapon control and operational deployment are outside the existing project
+boundary. Initial integration experiments use synthetic cooperative workflows.
+
+### 2. Reactive planning and agent middleware
+
+| Resource | Proposed role | Qualification |
+| --- | --- | --- |
+| [Reactive plan execution in multi-agent environments](https://github.com/cguz/planning-reactive-planner) | Reactive-planning research reference | README identifies the included Reactive Planner as single-agent code within broader dissertation research; do not assume a complete distributed platform |
+| Reactive Integrated Planning Architecture (RIPR) | Requested planning-architecture reference | Exact authoritative source/version unresolved; similarly named repositories were not treated as matches |
+| [RoboRTS](https://github.com/RoboMaster/RoboRTS) | Mobile-robot and real-time-strategy software reference | Hardware/ROS-specific stack; reviewed README marks part of the intelligent multi-agent layer as TODO |
+| [OpenMAS](https://github.com/openmas-ai/openmas) | Asynchronous Python agent-service candidate | Lifecycle and pluggable communications; requires a separate simulation-time adapter |
+| [OpenMAS for MATLAB](https://github.com/douthwja01/OpenMAS) | Naming-disambiguation reference | Different project with a proprietary MATLAB runtime dependency; not the requested asynchronous Python framework |
+
+Use agent components behind typed task and observation interfaces. Log the
+model/policy version and any instructor-accepted output; do not equate
+asynchronous completion order with deterministic simulation behavior.
+
+### 3. DEVS, multimodel and continuous-system simulation
+
+| Resource | Proposed role | Qualification |
+| --- | --- | --- |
+| [VLE — Virtual Laboratory Environment](https://github.com/vle-forge/vle) | DEVS-based multimodel simulation candidate | Qualify model packages, build dependencies and clock ownership |
+| [PythonPDEVS](https://github.com/capocchi/PythonPDEVS) | Parallel DEVS implementation candidate | Reviewed repository provides minimal/local and distributed configurations with different capabilities; pin the selected implementation |
+| [ModelicaDEVS](https://github.com/modelica-3rdparty/ModelicaDEVS) | Modelica discrete-event library reference | README explicitly states unclear licensing; reference-only until rights and toolchain compatibility are resolved |
+| [DEVS Streaming Framework](https://github.com/simlytics-cloud/devs-streaming) | Requested protocol for composing distributed DEVS models across frameworks | JSON exchange specification; each framework needs an execution wrapper and scheduling semantics, not just a streaming connection |
+| C Model Developer (CMD) | Requested C-based, time-dependent ODE modeling environment reference | Exact upstream unresolved; a similarly named custom C++ repository was not assumed to be this tool |
+| Modelica / OpenModelica / FMI | Existing continuous subsystem modeling and model-exchange boundary | Select FMI mode/version and establish event/solver coupling explicitly |
+
+### 4. Information-system and exercise references
+
+| Resource | Catalog role | Qualification |
+| --- | --- | --- |
+| [Real-Time Battle Field Management System](https://github.com/bluebat/rtbfms) | Requested information-system reference | Reviewed README provides only the project name; functionality, interfaces and license need further evidence |
+| [ODINv2 — Open Source C2IS](https://github.com/syncpoint/ODINv2) | Optional map/collaboration reference for synthetic exercise displays | Not a physics engine; verify licensing, exchange formats and selected release before any adapter |
+| [Boomslang](https://github.com/kabartsjc/boomslang-c2-sim) | C2 doctrine/exercise simulation research reference | Upstream describes simplified modeling; does not establish operational validity or jfxmbdss interoperability |
+| Extensible Battle Management Language | Requested language/schema reference | Exact specification and implementation unresolved; do not silently substitute another BML dialect or the unrelated multimedia EBML format |
+
+These remain isolated research references. A future synthetic-data display
+adapter must preserve source IDs, timestamps and provenance without enabling
+real operational command functions.
+
+### 5. Standards, semantic models and architecture
+
+| Resource | Architectural use | Qualification |
+| --- | --- | --- |
+| [UDDL query-language implementation](https://github.com/Epistimis/UDDL-Query-Language) | Data-definition/query semantics reference originating in FACE work | Reviewed implementation is unofficial and reports incomplete constraint support; distinguish it from the underlying specification |
+| [NATO Education and Training Network (NETN) FOM](https://github.com/AMSP-04/NETN-FOM) | Candidate HLA information model for distributed training | Reviewed artifact license is CC BY-ND 4.0; preserve upstream modules and review terms before modifying or redistributing derived artifacts |
+| [OARIS — Open Architecture Radar Interface Standard](https://www.omg.org/spec/OARIS/) | Versioned external sensor/environment interface research | An interface specification, not a complete simulator; choose the exact edition and a non-operational subset |
+| [UAF — Unified Architecture Framework](https://www.omg.org/spec/UAF/) | Requirements and architecture viewpoints | Correct name is Unified, not United; modeling framework rather than runtime middleware |
+| [C2SIM — Command and Control Simulation Interoperation](https://github.com/OpenC2SIM/C2SIMArtifacts) | Simulation-interoperation schema/artifact reference | Pin SISO specification/artifact versions and test mappings; repository inclusion does not imply conformance |
+| HLA / DDS / ROS 2 / OpenAPI / AsyncAPI | Existing federation, messaging and service boundaries | Distinct responsibilities; document schemas, ownership, QoS and time semantics |
+
+### 6. Robustness, multiscale analysis and computing performance
+
+| Resource | Proposed role | Qualification |
+| --- | --- | --- |
+| [Adversarial Machine Learning Library — adlib](https://github.com/vu-aml/adlib) | Offline robustness evaluation on approved synthetic datasets | MIT-licensed research library with legacy dependencies; not a maritime simulator or operational decision service |
+| [ARL Hierarchical MultiScale Framework (ARL-HMS)](https://github.com/USArmyResearchLab/ARL-Hierarchical-Multiscale-Framework) | Optional heterogeneous-HPC multiscale model evaluation | C++/Python framework; each component model and scale bridge needs its own verification |
+| [The Sniper Multi-Core Simulator](https://github.com/snipersim/snipersim) | Optional processor/workload performance research | x86 multicore architectural simulator, not a marksmanship or battlefield simulator; inspect NOTICE and dependencies |
+| PyTorch / TensorFlow / MLflow / Jupyter | Existing analytics, experiments and reports | Dataset lineage, evaluation split and model-version tracking |
+
+### 7. Preserved maritime, MOB and portable AR baseline
+
+| Domain | Existing candidates | Role |
+| --- | --- | --- |
+| MBSE | Capella / Arcadia | Architecture and requirement-to-test traceability |
+| Physical simulation | OpenFOAM, Project Chrono, CalculiX | Hydrodynamics, mechanics and structural research |
+| Geometry and views | Blender, Godot, QGIS | Original assets, 3D clients and geospatial analysis |
+| Storage and monitoring | PostgreSQL/PostGIS, Grafana | Twin records, spatial data and observations |
+| Portable XR | OpenXR, optional Monado | Device-qualified rendering/runtime boundary |
+| Wearable concept | IVAS | Reference only; actual device compatibility remains unknown |
+| Deployment | Docker, Kubernetes | Optional reproducible packaging and service hosting |
+
+### Admission and evidence
+
+For every component record upstream URL, fork relationship, revision,
+license, data/asset rights, runtime, supported profiles, adapter version,
+fidelity and test evidence. Track **cataloged**, **implemented**,
+**integration-tested**, and **validated for a named use** separately.
+
+RIPR, Extensible Battle Management Language and CMD remain explicit identity
+gaps. AFSIM remains an access/distribution qualification gap. ModelicaDEVS
+remains a licensing gap. None is a mandatory dependency. Public source,
+a standard, a hardware platform and an openly licensed runtime are different
+categories and must not be described as one uniformly libre stack.
 
 ## User Guide
 
@@ -734,6 +886,9 @@ jfxmbdss/
 -   [x] Modular digital-twin interface catalog.
 -   [x] Required/optional/research dependency separation.
 -   [x] Document IVAS-inspired portable AR and MOB integration architecture.
+-   [x] Categorize the expanded multi-model, agent and interoperability compendium.
+-   [x] Document integration planes, clock ownership and evidence gates.
+-   [ ] Resolve RIPR, Extensible BML and CMD identities and license/access gaps.
 -   [ ] Normalize repository metadata and licenses.
 
 ### Phase 2 --- Minimal OpenTwin Core
@@ -770,6 +925,9 @@ jfxmbdss/
 -   [ ] Multi-federate example.
 -   [ ] ROS 2/DDS bridge.
 -   [ ] Recorder/replay federate.
+-   [ ] Selected NETN/C2SIM schema mapping and gateway tests.
+-   [ ] DEVS backend lifecycle and cross-framework scheduling tests.
+-   [ ] OpenMAS simulation-time adapter for synthetic cooperative tasks.
 
 ### Phase 6 --- AI & Analytics
 
