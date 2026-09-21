@@ -1,0 +1,274 @@
+<mxfile host="app.diagrams.net" modified="2026-09-11T00:00:00.000Z" agent="OpenAI Codex" version="31.4.2" type="device" compressed="false">
+  <diagram id="naval-training-architecture" name="01 - High-Level Naval Training Architecture">
+    <mxGraphModel dx="1920" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="main-title" value="JFXAI4MAD — Naval Training Version: High-Level Submarine Requirements Engineering" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f4e78;strokeColor=#163a5c;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1860" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="scope-note" value="TRAINING / RESEARCH SCOPE&#xa;High-level, non-operational, non-weapon architecture.&#xa;No exact dimensions, depth, pressure, tactical performance, or sensitive procedures." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="95" width="560" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="reference-inputs" value="REFERENCE INPUTS&#xa;JFXAI4MAD concept image&#xa;Neyk context page&#xa;New Atlas optional design reference&#xa;Public concept claims require independent verification." link="https://newatlas.com/neyk-luxury-submarine/50052/" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#5a4a00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="95" width="560" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="needs" value="Training and&#xa;Stakeholder Needs" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a3553;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="225" width="210" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="mbse" value="Controlled MBSE&#xa;Requirements Baseline" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a3553;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="280" y="225" width="230" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="models" value="CAD / CAM / CAS&#xa;and Modelica Models" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="550" y="225" width="230" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="simulation" value="Simulation and&#xa;Digital Twin" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="820" y="225" width="230" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="safety" value="Safety, V&amp;V, and&#xa;Evidence Review" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="225" width="230" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="prototype" value="Prototype and&#xa;Qualification" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="225" width="230" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="production" value="Serial Production&#xa;and Unit Acceptance" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="225" width="260" height="78" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-needs-mbse" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;endArrow=block;" edge="1" parent="1" source="needs" target="mbse">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-mbse-models" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;endArrow=block;" edge="1" parent="1" source="mbse" target="models">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-models-sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;endArrow=block;" edge="1" parent="1" source="models" target="simulation">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-sim-safety" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;endArrow=block;" edge="1" parent="1" source="simulation" target="safety">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-safety-prototype" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="safety" target="prototype">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prototype-production" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;endArrow=block;" edge="1" parent="1" source="prototype" target="production">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="architecture-label" value="HIGH-LEVEL SYSTEM ARCHITECTURE" style="text;html=0;strokeColor=none;fillColor=none;fontColor=#1f4e78;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="355" width="430" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="structural" value="Pressure and&#xa;Structural Boundary" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2f0d9;strokeColor=#70ad47;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="buoyancy" value="Buoyancy, Ballast,&#xa;and Trim" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2f0d9;strokeColor=#70ad47;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="265" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="propulsion" value="Propulsion and&#xa;Energy" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2f0d9;strokeColor=#70ad47;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="navigation" value="Navigation, Control,&#xa;and Monitoring" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2f0d9;strokeColor=#70ad47;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="735" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="lss" value="Life Support and&#xa;Habitability" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e2f0d9;strokeColor=#70ad47;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="970" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="emergency" value="Emergency and&#xa;Recovery" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fce4d6;strokeColor=#ed7d31;fontColor=#7f3b00;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1205" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="training" value="Training, Scenario&#xa;Control, and Assessment" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="400" width="205" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="configuration" value="Configuration, Quality,&#xa;and Lifecycle Records" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1675" y="400" width="215" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-mbse-architecture" value="allocates requirements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#6c8ebf;fontColor=#1a3553;endArrow=block;" edge="1" parent="1" source="mbse" target="navigation">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-sim-architecture" value="executes scenarios" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#82b366;fontColor=#274e27;endArrow=block;" edge="1" parent="1" source="simulation" target="training">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="immersion" value="Controlled Immersion-Test Campaign&#xa;Readiness review • hold points • abort criteria • instrumentation • post-test inspection" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="930" y="530" width="410" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="validated" value="Validated Baseline and&#xa;Acceptance Evidence" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="530" width="350" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-production-immersion" value="authorized staged testing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;fontColor=#5c1f1f;endArrow=block;" edge="1" parent="1" source="production" target="immersion">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-immersion-validated" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="immersion" target="validated">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="optional-label" value="OPTIONAL DESIGN STUDY — NOT A BASELINE" style="text;html=0;strokeColor=none;fillColor=none;fontColor=#a67c00;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="650" width="560" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="optional-design" value="Neyk-inspired human-centered&#xa;observation variant&#xa;&#xa;Modular observation / cabin concept&#xa;Panoramic observation and HMI&#xa;Configurable external interface&#xa;Conceptual only; public claims unverified" link="https://newatlas.com/neyk-luxury-submarine/50052/" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#5a4a00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="690" width="390" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="variant-review" value="Independent Review Gate&#xa;Structural • stability • buoyancy&#xa;control • life support • regulatory" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="715" width="300" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="variant-evidence" value="Variant Simulation and&#xa;Qualification Evidence" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="880" y="715" width="280" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="variant-baseline" value="Approved Variant Package&#xa;or Rejected / Deferred Record" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a3553;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="715" width="300" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-optional-review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#d6b656;endArrow=block;" edge="1" parent="1" source="optional-design" target="variant-review">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-review-evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="variant-review" target="variant-evidence">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-evidence-variant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#82b366;endArrow=block;" edge="1" parent="1" source="variant-evidence" target="variant-baseline">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-variant-mbse" value="configuration-controlled change" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#6c8ebf;fontColor=#1a3553;endArrow=block;" edge="1" parent="1" source="variant-baseline" target="mbse">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ai-label" value="LOCAL AI TRAINING ASSISTANT — ADVISORY ONLY" style="text;html=0;strokeColor=none;fillColor=none;fontColor=#8064a2;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="900" width="650" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="astra" value="Astra Max Work Plugin&#xa;/ Local Connector" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="945" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="rag" value="Approved RAG / MCP&#xa;Engineering Data" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="290" y="945" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="gptoss" value="Local gpt-oss&#xa;Inference" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="550" y="945" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="advisory" value="Draft Explanation, Scenario,&#xa;or Traceability Finding" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="810" y="945" width="250" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="human-review" value="Human Engineering&#xa;Review and Approval" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="945" width="250" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-astra-rag" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#8064a2;endArrow=block;" edge="1" parent="1" source="astra" target="rag">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-rag-gptoss" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#8064a2;endArrow=block;" edge="1" parent="1" source="rag" target="gptoss">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-gptoss-advisory" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#8064a2;endArrow=block;" edge="1" parent="1" source="gptoss" target="advisory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-advisory-human" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="advisory" target="human-review">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-human-mbse" value="approved changes only" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#6c8ebf;fontColor=#1a3553;endArrow=block;" edge="1" parent="1" source="human-review" target="mbse">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend" value="Legend: blue = requirements and configuration control • green = engineering models, production, and evidence • red = safety or authorization gate • yellow = optional concept branch • purple = local advisory AI support" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#333333;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="945" width="440" height="72" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="naval-training-evolution" name="02 - Simplified Evolution and Training Path">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="simple-title" value="Simplified Evolution — From Concept to Controlled Evidence" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#1f4e78;strokeColor=#163a5c;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="25" width="1540" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="simple-scope" value="Training view only: every transition requires an approved review and objective evidence. The optional reference is a design-study input, not a technical baseline." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="105" width="1540" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s-concept" value="1. Concept&#xa;and Needs" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a3553;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="45" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-req" value="2. Requirements&#xa;and MBSE" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a3553;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="275" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-model" value="3. CAD / CAM / CAS&#xa;and Simulation" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="505" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-proto" value="4. Prototype&#xa;and Qualification" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="735" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-series" value="5. Production&#xa;and Unit Records" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="965" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-immersion" value="6. Controlled&#xa;Immersion Tests" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="250" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-acceptance" value="7. Evidence,&#xa;Acceptance, and Feedback" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="250" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="se1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;endArrow=block;" edge="1" parent="1" source="s-concept" target="s-req">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;endArrow=block;" edge="1" parent="1" source="s-req" target="s-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;endArrow=block;" edge="1" parent="1" source="s-model" target="s-proto">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;endArrow=block;" edge="1" parent="1" source="s-proto" target="s-series">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="s-series" target="s-immersion">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="s-immersion" target="s-acceptance">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="optional-simple-label" value="OPTIONAL DESIGN STUDY" style="text;html=0;strokeColor=none;fillColor=none;fontColor=#a67c00;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="45" y="440" width="340" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-neyk" value="Neyk-inspired&#xa;observation / cabin concept&#xa;Human-centered interfaces&#xa;Modular variant themes" link="https://newatlas.com/neyk-luxury-submarine/50052/" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#5a4a00;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="45" y="485" width="250" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-gate" value="Independent&#xa;Review Gate" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="360" y="485" width="190" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-variant" value="Variant evidence or&#xa;deferred / rejected record" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#274e27;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="615" y="485" width="220" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-config" value="Configuration-controlled&#xa;change to the MBSE baseline" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a3553;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="485" width="260" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="s-note" value="The public article is a historical design reference. Its reported performance, structure, materials, propulsion, payload, and production claims are not used as requirements." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#333333;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="485" width="360" height="115" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="se-neyk-gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#d6b656;endArrow=block;" edge="1" parent="1" source="s-neyk" target="s-gate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se-gate-variant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#b85450;endArrow=block;" edge="1" parent="1" source="s-gate" target="s-variant">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se-variant-config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#6c8ebf;endArrow=block;" edge="1" parent="1" source="s-variant" target="s-config">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="se-config-req" value="reviewed update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#6c8ebf;fontColor=#1a3553;endArrow=block;" edge="1" parent="1" source="s-config" target="s-req">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="local-ai" value="Astra Max Work Plugin / Local Connector → Approved RAG / MCP Data → Local gpt-oss Inference → Advisory Drafts → Human Review" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e4dfec;strokeColor=#8064a2;fontColor=#403252;fontSize=12;align=center;verticalAlign=middle;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="700" width="1115" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="local-ai-rule" value="Local AI is advisory only: it cannot command propulsion, ballast, life support, emergency actuators, immersion authorization, or baselined requirements." style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#5c1f1f;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="700" width="360" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="simple-legend" value="Blue = controlled requirements • Green = models, production, and evidence • Red = safety/authorization gate • Yellow = optional concept • Purple = advisory local AI support" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#333333;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="835" width="1525" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
