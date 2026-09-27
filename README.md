@@ -5,6 +5,9 @@
 
 ### An Open Science Platform for Maritime Digital Engineering, Digital Twins, Distributed Simulation and AI-Assisted Analysis
 
+**Arquitectura ampliada y compendio recuperado:** [Consolidated AI Integration Architecture](docs/ai-integration-architecture.md), con índice, contratos, hoja de ruta y las siete categorías del commit `e77be5b6`.
+
+
 ---
 
 # Executive Summary
@@ -308,6 +311,22 @@ Todos ellos permanecen desacoplados mediante adaptadores especializados.
 ---
 
 # Artificial Intelligence Layer
+
+La arquitectura ampliada conecta el núcleo OpenTwin con conocimiento versionado,
+RAG con referencias, inferencia local o remota autorizada, modelos predictivos,
+detección de anomalías, modelos sustitutos y servicios multiagente acotados.
+Los resultados se registran como propuestas trazables; el servicio de escenarios
+conserva la autoridad sobre los cambios y el instructor revisa su aceptación.
+
+El diseño define contratos de observación, solicitud, resultado, propuesta,
+aceptación y reproducción; separa el tiempo de simulación del tiempo de inferencia
+y establece criterios de evaluación para mantenimiento, logística MOB e interacción XR.
+
+Consulta la [arquitectura consolidada](docs/ai-integration-architecture.md)
+y el [compendio categorizado](docs/ai-integration-architecture.md#open-source-technology-compendium).
+Estas capacidades son propuestas arquitectónicas: esta actualización documental
+no implementa servicios ni acredita integraciones operativas.
+
 
 La IA actúa como una capacidad auxiliar dentro del ecosistema.
 
