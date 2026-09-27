@@ -26,6 +26,7 @@ working service, qualified adapter, validated model or supported hardware device
 - [OpenTwin Core](#opentwin-core)
 - [Model-Based Systems Engineering](#model-based-systems-engineering)
 - [Maritime Digital Twins](#maritime-digital-twins)
+- [CAD Design Concept Catalog](#cad-design-concept-catalog)
 - [Simulation Ecosystem](#simulation-ecosystem)
 - [Interoperability Architecture](#interoperability-architecture)
 - [Artificial Intelligence Layer](#artificial-intelligence-layer)
@@ -156,14 +157,149 @@ applies this approach to the proposed analytical services.
 
 | Domain | Example assets and environments |
 | --- | --- |
-| Surface vessels | Commercial vessels, research vessels and training platforms |
+| Surface vessels | Commercial vessels, research vessels, hydrogen-electric USVs and training platforms |
+| Amphibious and ground-effect mobility | Air–sea cargo transport and coastal mobility concept studies |
 | Port infrastructure | Docks, terminals, logistics centers and port equipment |
 | Offshore systems | Offshore platforms, energy installations and modular infrastructure |
-| Autonomous systems | Research surface/underwater vehicles and intelligent sensor networks |
+| Autonomous systems | Research surface vehicles and intelligent sensor networks |
 | Environmental systems | Marine ecosystems, weather, currents and waves |
 
 These are intended modeling domains; listing an asset does not establish a
 validated model or operational capability.
+
+## CAD Design Concept Catalog
+
+The [CAD directory](MBSE/CAD/) contains four retained design illustrations.
+They describe candidate maritime, amphibious and offshore research platforms.
+These JPG files are concept art, not editable CAD assemblies, validated digital
+twins or demonstrated operational capabilities. Captions and colored analysis
+overlays do not establish measured performance.
+
+| Concept | Design focus | Proposed OpenTwin use |
+| --- | --- | --- |
+| Hydrogen-hybrid amphibious transport | High-wing cargo aircraft, four electric propulsion nacelles and twin floats | Air–sea logistics, energy studies and amphibious handling scenarios |
+| OpenTwin Marine ground-effect platform | Broad-wing waterborne mobility concept with interchangeable mission modules | Coastal connectivity, water operations and mission configuration studies |
+| Modular Mobile Offshore Base | Connected floating modules, flight deck, hangars and logistics spaces | Infrastructure, resource coordination and emergency-response training |
+| OpenTwin USV H2 | Uncrewed modular cargo vessel with hydrogen-electric power | Surface logistics, cargo handling, energy and maintenance simulation |
+
+### Hydrogen-Hybrid Amphibious Transport
+
+![Hydrogen-hybrid amphibious transport concept](MBSE/CAD/hydrogen-hybrid-amphibious-transport-concept.jpg)
+
+The Hercules-inspired illustration combines a modular cargo fuselage, high wing,
+four electric propulsion nacelles and a twin-float assembly. Its energy concept
+explicitly shows **gaseous hydrogen storage**, fuel-cell power and a buffer battery;
+it must not be relabeled as liquid-hydrogen storage without a separate revision.
+
+Proposed studies connect aerodynamics, float hydrodynamics, mass distribution,
+thermal management and mission energy. Candidate scenarios include coastal cargo
+transfer, island access and humanitarian logistics. Hydrogen storage volume,
+usable payload, cooling, buoyancy and water-operation limits remain to be
+established. The reference appearance does not imply manufacturer endorsement.
+
+The twin should version airframe/float geometry, cargo configuration, energy
+state and environmental conditions. Simulation outcomes feed logistics and
+maintenance analysis through the existing evidence and instructor services.
+
+### OpenTwin Marine Ground-Effect Platform
+
+![OpenTwin Marine ground-effect sea mobility concept](MBSE/CAD/liberty-lifter-seaplane-concept.jpg)
+
+The asset retains its Liberty Lifter-inspired filename, while the illustration
+presents an **OpenTwin Marine ground-effect sea mobility platform**. It depicts
+a broad wing, distributed propulsion features, a water-compatible hull and
+interchangeable passenger, cargo, medical, search-and-rescue, research and
+security-observation modules.
+
+This is a concept for studying coastal mobility and water takeoff/landing,
+including interaction with docks and floating infrastructure. Compare
+aerodynamic ground effect, water loads, stability, wind/wave conditions,
+propulsion demand and module mass properties in explicitly defined scenarios.
+Battery and hydrogen options are alternatives to evaluate, not a finalized
+energy-system specification.
+
+AI navigation, pilot-optional operation, lower noise and efficiency labels in
+the artwork are research objectives. No autonomous capability, medical
+certification or performance improvement is established by the image.
+The project represents mission modules as configuration and training objects,
+consistent with its non-operational research scope.
+
+### Modular Mobile Offshore Base
+
+![Modular offshore base and conceptual digital twin](MBSE/CAD/mobile-offshore-base-digital-twin.jpg)
+
+The illustration shows a modular floating base with a continuous flight deck,
+aircraft handling areas, hangars, internal storage and utility compartments.
+Its “MOAB” artwork label is treated here as the modular-base concept within the
+project's existing **Mobile Offshore Base (MOB)** research environment.
+
+The proposed twin represents individual platform modules and their connections,
+resource availability, deck/hangar occupancy, logistics flows, utilities and
+environmental state. Research scenarios include humanitarian staging,
+maintenance coordination, evacuation and disrupted resupply.
+
+Required evidence includes platform motion, structural and connection loads,
+mooring assumptions, utility continuity and aircraft-handling constraints.
+The image supplies no verified runway length, aircraft capacity, sea-state
+envelope or certified infrastructure design. Refer to the
+[Mobile Offshore Base research environment](#mobile-offshore-base-research-environment)
+for shared training authority and replay semantics.
+
+### OpenTwin USV H2
+
+![OpenTwin USV H2 modular cargo vessel cutaway](MBSE/CAD/opentwin-usv-h2-digital-twin-cutaway-concept.jpg)
+
+This **uncrewed surface vessel** concept combines a container deck, cargo gantry,
+internal modular hold, sensor mast and electric propulsion. The cutaway
+identifies hydrogen storage, fuel cells, buffer batteries, cargo handling,
+control/sensors and ballast management. The image does not specify the hydrogen
+storage phase; no cryogenic architecture is inferred.
+
+Proposed simulation cases cover loading/unloading, cargo distribution, energy
+demand, propulsion availability, ballast states, sensor degradation and
+supervised mission replay. Hydrodynamic overlays are conceptual visualizations,
+not computed results. Capacity, endurance, stability and autonomous navigation
+require independent models and validation.
+
+### Shared Modeling and Integration Plan
+
+The software labels in the illustrations identify proposed tool roles. They
+do not establish installed dependencies, completed adapters or compatible
+versions. Reuse the [technology ecosystem](#technology-ecosystem) and
+[architecture contracts](docs/ai-integration-architecture.md#contracts-and-lifecycle).
+
+| Modeling workstream | Candidate tooling shown or already considered by the project | Required artifact |
+| --- | --- | --- |
+| Geometry and visualization | FreeCAD, Blender; OpenVSP for the amphibious-aircraft study | Editable geometry, consistent views and asset identities |
+| Energy and systems | OpenModelica | Parameterized energy/thermal models with declared assumptions |
+| Fluid and structural studies | OpenFOAM, CalculiX | Versioned meshes, load cases, convergence checks and comparison evidence |
+| Dynamics | JSBSim for flight studies; Project Chrono for suitable mechanical studies | Qualified configuration-specific models |
+| Sensor and scenario integration | ROS 2, Gazebo and qualified adapters | Units, reference frames, clock mapping and replayable observations |
+| Interactive presentation | Godot via gdext and Blender assets | Role-filtered views linked to canonical state |
+| Analytics and evidence | Existing OpenTwin AI, storage and observability services | Provenance, uncertainty and human-reviewed proposals |
+
+This allocation is a proposed modeling plan, not a claim that a generic solver
+already implements each platform. Software and asset licenses must be checked
+per selected revision.
+
+```mermaid
+flowchart TD
+    C["CAD concept and requirements"] --> G["Versioned geometry and configuration"]
+    G --> P["Physical and energy models"]
+    G --> L["Logistics and resource models"]
+    P --> S["Controlled scenario execution"]
+    L --> S
+    S --> E["Recorded evidence"]
+    E --> V{"Verified and validated for intended use?"}
+    V -->|No| G
+    V -->|Yes| H["Human-reviewed training release"]
+```
+
+Each retained concept needs editable geometry, model boundaries, mass and
+energy assumptions, interface contracts, synthetic scenarios and acceptance
+criteria before it becomes a usable simulation package. Keep measured,
+synthetic and AI-generated observations distinguishable. Performance and
+sustainability claims require evidence beyond an illustration.
 
 ## Simulation Ecosystem
 
@@ -299,6 +435,7 @@ represented as a new upstream audit.
 | Distributed Simulation Framework | Federation and interoperability adapters |
 | XR Training Environment | Immersive training clients and instructor workflows |
 | Scientific Repository | Documentation, models, examples and reproducible evidence |
+| CAD Concept Packages | Four retained illustrations with traceable geometry, modeling and validation roadmaps |
 
 ## Roadmap
 
@@ -341,3 +478,4 @@ All generated results require independent human validation.
 - Simulate before deployment.
 - Validate before trust.
 - Keep every component replaceable.
+
