@@ -169,7 +169,7 @@ validated model or operational capability.
 
 ## CAD Design Concept Catalog
 
-The [CAD directory](MBSE/CAD/) contains four retained design illustrations.
+The [CAD directory](MBSE/CAD/) contains three retained design illustrations.
 They describe candidate maritime, amphibious and offshore research platforms.
 These JPG files are concept art, not editable CAD assemblies, validated digital
 twins or demonstrated operational capabilities. Captions and colored analysis
@@ -177,29 +177,9 @@ overlays do not establish measured performance.
 
 | Concept | Design focus | Proposed OpenTwin use |
 | --- | --- | --- |
-| Hydrogen-hybrid amphibious transport | High-wing cargo aircraft, four electric propulsion nacelles and twin floats | Air–sea logistics, energy studies and amphibious handling scenarios |
 | OpenTwin Marine ground-effect platform | Broad-wing waterborne mobility concept with interchangeable mission modules | Coastal connectivity, water operations and mission configuration studies |
 | Modular Mobile Offshore Base | Connected floating modules, flight deck, hangars and logistics spaces | Infrastructure, resource coordination and emergency-response training |
 | OpenTwin USV H2 | Uncrewed modular cargo vessel with hydrogen-electric power | Surface logistics, cargo handling, energy and maintenance simulation |
-
-### Hydrogen-Hybrid Amphibious Transport
-
-![Hydrogen-hybrid amphibious transport concept](MBSE/CAD/hydrogen-hybrid-amphibious-transport-concept.jpg)
-
-The Hercules-inspired illustration combines a modular cargo fuselage, high wing,
-four electric propulsion nacelles and a twin-float assembly. Its energy concept
-explicitly shows **gaseous hydrogen storage**, fuel-cell power and a buffer battery;
-it must not be relabeled as liquid-hydrogen storage without a separate revision.
-
-Proposed studies connect aerodynamics, float hydrodynamics, mass distribution,
-thermal management and mission energy. Candidate scenarios include coastal cargo
-transfer, island access and humanitarian logistics. Hydrogen storage volume,
-usable payload, cooling, buoyancy and water-operation limits remain to be
-established. The reference appearance does not imply manufacturer endorsement.
-
-The twin should version airframe/float geometry, cargo configuration, energy
-state and environmental conditions. Simulation outcomes feed logistics and
-maintenance analysis through the existing evidence and instructor services.
 
 ### OpenTwin Marine Ground-Effect Platform
 
@@ -270,7 +250,7 @@ versions. Reuse the [technology ecosystem](#technology-ecosystem) and
 
 | Modeling workstream | Candidate tooling shown or already considered by the project | Required artifact |
 | --- | --- | --- |
-| Geometry and visualization | FreeCAD, Blender; OpenVSP for the amphibious-aircraft study | Editable geometry, consistent views and asset identities |
+| Geometry and visualization | FreeCAD, Blender; OpenVSP for ground-effect platform studies | Editable geometry, consistent views and asset identities |
 | Energy and systems | OpenModelica | Parameterized energy/thermal models with declared assumptions |
 | Fluid and structural studies | OpenFOAM, CalculiX | Versioned meshes, load cases, convergence checks and comparison evidence |
 | Dynamics | JSBSim for flight studies; Project Chrono for suitable mechanical studies | Qualified configuration-specific models |
@@ -435,7 +415,7 @@ represented as a new upstream audit.
 | Distributed Simulation Framework | Federation and interoperability adapters |
 | XR Training Environment | Immersive training clients and instructor workflows |
 | Scientific Repository | Documentation, models, examples and reproducible evidence |
-| CAD Concept Packages | Four retained illustrations with traceable geometry, modeling and validation roadmaps |
+| CAD Concept Packages | Three retained illustrations with traceable geometry, modeling and validation roadmaps |
 
 ## Roadmap
 
@@ -479,3 +459,7 @@ All generated results require independent human validation.
 - Validate before trust.
 - Keep every component replaceable.
 
+
+## Concept migration · 13 October 2026
+
+The hydrogen-hybrid amphibious transport concept and its specifications now belong to [jfxai4rffs](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/main/docs/requirements/emergency-response-support-concepts.md). Source history remains available; current requirements and CAD previews are maintained at the destination.
